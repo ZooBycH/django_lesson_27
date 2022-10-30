@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "django-lesson-27"
+version = "0.1.0"
+description = ""
+authors = ["ZooBycH <mz88@list.ru>"]
+readme = "README.md"
+packages = [{include = "django_lesson_27"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
