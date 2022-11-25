@@ -1,5 +1,3 @@
-from pyexpat import model
-
 import factory.django
 
 from authentication.models import User
