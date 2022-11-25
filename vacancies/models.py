@@ -1,6 +1,15 @@
+from datetime import date
+
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from authentication.models import User
+
+
+def check_date_no_past(value: date):
+    if value < date.today():
+        raise ValidationError(f"{value} is in the past.")
 
 
 class Skill(models.Model):
@@ -30,6 +39,8 @@ class Vacancy(models.Model):
     skills = models.ManyToManyField(Skill)
 
     likes = models.IntegerField(default=0)
+    min_experience = models.IntegerField(null=True, validators=[MinValueValidator(0)])
+    updated_ad = models.DateField(null=True, validators=[check_date_no_past])
 
     class Meta:
         verbose_name = "Вакансия",
